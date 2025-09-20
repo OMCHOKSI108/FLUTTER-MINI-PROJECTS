@@ -31,36 +31,34 @@ Course alignment:
 This practical aligns with CO1 (learning outcomes for widget tree, navigation and routing) and is expected to take approximately 2 hours to implement and explore.
 
 
-Video demo
-----------
+## 🎥 Demo Video
 
-A short video demonstrating Practical 1 is included in this repository as `practical1.mp4`. On GitHub and many Markdown renderers the video can be embedded directly; if the platform doesn't render local video files, use the link below to download/play it.
+Here's a demonstration of the Flutter Navigation and Data Passing app:
 
-<video controls width="640">
-	<source src="./media/practical1.mp4" type="video/mp4">
-	Your browser does not support the video tag. You can download the demo here: [practical1.mp4](./media/practical1.mp4)
-</video>
+https://github.com/OMCHOKSI108/FLUTTER-MINI-PROJECTS/assets/your-user-id/practical1.mp4
 
-Media & GitHub notes
---------------------
+> **Note**: If the video doesn't load above, you can:
+> -  **[Download the video](./media/practical1.mp4)** to watch locally
+> -  **[View raw video file](https://github.com/OMCHOKSI108/FLUTTER-MINI-PROJECTS/raw/main/practical_1/media/practical1.mp4)** directly
 
-The demo video has been moved to `media/practical1.mp4` to keep large files organized. If your media files are large, consider using Git LFS to store them instead of keeping them in the main repository. To move the file locally (PowerShell):
+## 📁 Media & GitHub Notes
 
-```powershell
-mkdir media
-Move-Item -Path .\practical1.mp4 -Destination .\media\practical1.mp4
-git add media/practical1.mp4 README.md
-git commit -m "Add demo video and update README"
-git push
-```
+The demo video is stored in `media/practical1.mp4` using **Git LFS** (Large File Storage) to efficiently handle large media files without bloating the repository.
 
-To use Git LFS for large files:
+✅ **Git LFS is already configured for this repository** - the video will be properly versioned and accessible.
+
+### For other projects, here's how to set up Git LFS:
 
 ```powershell
+# One-time setup for new repositories
 git lfs install
-git lfs track "media/*.mp4"
+git lfs track "*.mp4"
+git lfs track "*.mov" 
+git lfs track "*.gif"
 git add .gitattributes
-git add media/practical1.mp4
+
+# Add your media files
+git add media/
 git commit -m "Add demo video via Git LFS"
 git push origin main
 ```
