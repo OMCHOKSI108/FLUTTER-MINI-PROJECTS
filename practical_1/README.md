@@ -37,7 +37,7 @@ Video demo
 A short video demonstrating Practical 1 is included in this repository as `practical1.mp4`. On GitHub and many Markdown renderers the video can be embedded directly; if the platform doesn't render local video files, use the link below to download/play it.
 
 <video controls width="640">
-	<source src="./media/practical1.mp4" type="video/mp4">
+	<source src="/media/practical1.mp4" type="video/mp4">
 	Your browser does not support the video tag. You can download the demo here: [practical1.mp4](./media/practical1.mp4)
 </video>
 
