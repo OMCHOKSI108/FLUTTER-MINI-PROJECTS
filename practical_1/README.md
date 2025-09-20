@@ -6,9 +6,7 @@ The app includes a login screen where a user enters a name, a dashboard that gre
 
 ## Demo Video
 
-[Watch Demo Video]
-<video src="./media/practical1.mp4" controls width="600"></video>
-
+[Watch Demo Video](./media/practical1.mp4)
 
 ## Project Structure
 
