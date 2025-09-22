@@ -1,0 +1,40 @@
+Submit a screenshot home-empty.png (jpeg) showing the empty state message with no time entries when the app is first launched.
+
+Submit a screenshot home-empty-group.png (jpeg) of the home screen with the Projects tab open, showing the empty state with no time entries.
+
+Submit a screenshot entry-project-list.png (jpeg) showing the drop-down for projects when adding a new entry.
+
+Submit a screenshot entry-task-list.png (jpeg) showing the dropdown for tasks when adding a new entry.
+
+
+Submit a screenshot entry-add.png (jpeg) showing the ‘Add TimeEntry’ form with fields filled in but before submission, demonstrating the entry process. The fields should be total time, project name, task name, notes, and date.
+
+
+Submit a screenshot home-entries.png (jpeg) showing the Home Screen with multiple time entries listed.
+
+
+Submit a screenshot home-entries-group.png (jpeg) showing the home screen with multiple time entries grouped by projects.
+
+
+Submit a screenshot entry-delete.png (jpeg) of the home screen while deleting an entry, showing the swipe-to-delete action or a recycle bin delete button.
+
+
+
+Submit a screenshot menu.png (jpeg) of the hamburger menu open showing Projects and Tasks.
+
+
+
+Submit a screenshot project-management.png (jpeg) showing a project management page with a list of projects and the floating (+) button to add a new project.
+
+Submit a screenshot task-management.png (jpeg) showing a task management page with a list of tasks and the floating (+) button to add a new task.
+
+Submit a screenshot task-add.png (jpeg) showing a user adding a new entry to the list of tasks on the management page using a dialog.
+
+
+
+Submit a screenshot project-add.png (jpeg) showing a user adding a new entry to the list of projects on the management page using a dialog.
+
+
+Submit a screenshot local-storage-empty.png (jpeg) showing the local storage displaying an empty list of time entries.
+
+Submit a screenshot local-storage-filled.png (jpeg) showing the local storage displaying a few entries.
