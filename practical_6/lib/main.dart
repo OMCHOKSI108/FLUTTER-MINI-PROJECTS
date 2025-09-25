@@ -1,13 +1,7 @@
-//PRACTICAL 6 : Notes App with Persistent Storage using SharedPreferences
-// Features: Multi-screen navigation, Dark mode toggle, Remember me, Notes CRUD
-// By 23AIML010 OM CHOKSI
 import 'package:flutter/material.dart';
-import 'package:shared_preferences/shared_preferences.dart';
-import 'login.dart';
-import 'dashboard.dart';
-import 'profile.dart';
-import 'todolist.dart';
-import 'settings.dart';
+import 'screens/login_screen.dart';
+import 'screens/dashboard_screen.dart';
+import 'services/preferences_service.dart';
 
 void main() {
   runApp(const MyApp());
@@ -21,28 +15,38 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-  ThemeMode _themeMode = ThemeMode.system;
+  bool _isDarkMode = false;
+  bool _isLoggedIn = false;
   bool _isLoading = true;
 
   @override
   void initState() {
     super.initState();
-    _loadThemePreference();
+    _loadAppState();
   }
 
-  Future<void> _loadThemePreference() async {
-    final prefs = await SharedPreferences.getInstance();
-    final isDark = prefs.getBool('dark_mode') ?? false;
+  Future<void> _loadAppState() async {
+    final prefsService = PreferencesService();
+    final isDarkMode = await prefsService.isDarkMode();
+    final isLoggedIn = await prefsService.isLoggedIn();
+
     setState(() {
-      _themeMode = isDark ? ThemeMode.dark : ThemeMode.light;
+      _isDarkMode = isDarkMode;
+      _isLoggedIn = isLoggedIn;
       _isLoading = false;
     });
   }
 
-  Future<void> toggleTheme(bool dark) async {
-    final prefs = await SharedPreferences.getInstance();
-    await prefs.setBool('dark_mode', dark);
-    setState(() => _themeMode = dark ? ThemeMode.dark : ThemeMode.light);
+  void _toggleTheme(bool isDark) {
+    setState(() {
+      _isDarkMode = isDark;
+    });
+  }
+
+  void _onLoginStateChanged(bool isLoggedIn) {
+    setState(() {
+      _isLoggedIn = isLoggedIn;
+    });
   }
 
   @override
@@ -52,32 +56,20 @@ class _MyAppState extends State<MyApp> {
         home: Scaffold(body: Center(child: CircularProgressIndicator())),
       );
     }
+
     return MaterialApp(
-      title: 'Practical 6 - Notes App',
+      title: 'Notes App',
       theme: ThemeData(
-        useMaterial3: true,
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.blue),
-        appBarTheme: AppBarTheme(
-          backgroundColor: Colors.blue,
-          foregroundColor: Colors.white,
-        ),
+        primarySwatch: Colors.blue,
+        brightness: _isDarkMode ? Brightness.dark : Brightness.light,
       ),
-      darkTheme: ThemeData(
-        useMaterial3: true,
-        colorScheme: ColorScheme.fromSeed(
-          seedColor: Colors.blue,
-          brightness: Brightness.dark,
-        ),
-      ),
-      themeMode: _themeMode,
-      initialRoute: '/login',
-      routes: {
-        '/login': (context) => LoginScreen(onThemeToggle: toggleTheme),
-        '/dashboard': (context) => DashboardScreen(onThemeToggle: toggleTheme),
-        '/profile': (context) => ProfileScreen(),
-        '/todolist': (context) => TodoListScreen(),
-        '/settings': (context) => SettingsScreen(onThemeToggle: toggleTheme),
-      },
+      home: _isLoggedIn
+          ? DashboardScreen(
+              onThemeToggle: _toggleTheme,
+              isDarkMode: _isDarkMode,
+              onLogout: () => _onLoginStateChanged(false),
+            )
+          : LoginScreen(onLogin: () => _onLoginStateChanged(true)),
     );
   }
 }

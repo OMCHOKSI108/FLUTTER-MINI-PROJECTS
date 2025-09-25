@@ -16,14 +16,14 @@ class _SignupScreenState extends State<SignupScreen> {
   final _phoneController = TextEditingController();
   final _cityController = TextEditingController();
 
-  void _signup() {
+  Future<void> _signup() async {
     if (_nameController.text.isNotEmpty &&
         _emailController.text.isNotEmpty &&
         _passwordController.text.isNotEmpty &&
         _branchController.text.isNotEmpty &&
         _phoneController.text.isNotEmpty &&
         _cityController.text.isNotEmpty) {
-      UserData.setUserData(
+      await UserData.setUserData(
         userName: _nameController.text,
         userEmail: _emailController.text,
         userPassword: _passwordController.text,

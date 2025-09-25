@@ -6,13 +6,18 @@ import 'screens/login_screen.dart';
 import 'screens/student_list_screen.dart';
 import 'screens/add_edit_student_screen.dart';
 import 'screens/profile_screen.dart';
+import 'models/user_data.dart';
 
-void main() {
-  runApp(const MyApp());
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await UserData.loadFromPrefs();
+  final initial = UserData.isLoggedIn ? '/students' : '/signup';
+  runApp(MyApp(initialRoute: initial));
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+  final String initialRoute;
+  const MyApp({super.key, required this.initialRoute});
 
   @override
   Widget build(BuildContext context) {
@@ -22,7 +27,7 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      initialRoute: '/signup',
+      initialRoute: initialRoute,
       routes: {
         '/signup': (context) => const SignupScreen(),
         '/login': (context) => const LoginScreen(),

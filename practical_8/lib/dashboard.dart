@@ -32,9 +32,9 @@ class _DashboardScreenState extends State<DashboardScreen> {
             SizedBox(height: 20),
             ElevatedButton(
               onPressed: () {
-                Navigator.pushNamed(context, '/todolist');
+                Navigator.pushNamed(context, '/news');
               },
-              child: Text('Todo List'),
+              child: Text('News'),
             ),
           ],
         ),
